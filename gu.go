@@ -21,7 +21,6 @@ package gu
 // State is the global state of the program. So all of the state in
 // a gu program is kept in one place.
 type State interface {
-
 	// Waiters gets the list of waiters from the state.
 	Waiters() []Waiter
 
@@ -34,7 +33,6 @@ type State interface {
 // In represents messages from the outside world, as a result of IO
 // actions, for example from the file system or an HTTP server.
 type In interface {
-
 	// Router is used to decide which processes a new input should
 	// be applied to.
 	Router(Waiter) Ready
@@ -59,7 +57,6 @@ type In interface {
 // an instruction to read a particular file, or put something into
 // a channel, or read the system time, or any other IO action.
 type Out interface {
-
 	// Io is used to run IO actions, like reading files or running
 	// an HTTP server. If this generates any messages that the
 	// main loop needs to know about, these are sent down the
@@ -81,7 +78,6 @@ type Out interface {
 // is being read in chunks, with each chunk being processed and sent
 // to the server.
 type Waiter interface {
-
 	// Expected decides if an input message from the outside world
 	// is expected by a waiter. If not, it returns nil, false. Each
 	// new message that is received is tested against each waiter
@@ -96,7 +92,6 @@ type Waiter interface {
 // Ready is a combination of a waiter and the thing it has been
 // waiting for, ready to be processed by the pure Update function.
 type Ready interface {
-
 	// Update contains program logic for updating the global state
 	// of the program and generating new IO actions to do.
 	//
@@ -108,7 +103,6 @@ type Ready interface {
 // Init has methods for initialising the state and the outputs.
 // It should be implemented for a type alias of an empty struct.
 type Init interface {
-
 	// InitState returns the initial value of the global state struct.
 	// It should be a pure function, that is, it should not do any
 	// IO.
