@@ -10,3 +10,11 @@ func ExampleState() {
 		fatalErr error
 	}
 }
+
+func (state State) ExampleWaiters() []Waiter {
+	return state.waiters
+}
+
+func (state State) ExampleFatalErr() error {
+	return state.fatalErr
+}
