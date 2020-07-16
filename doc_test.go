@@ -11,10 +11,10 @@ func ExampleState() {
 	}
 }
 
-func (state State) ExampleWaiters() []Waiter {
+func (state State) Waiters() []Waiter {
 	return state.waiters
 }
 
-func (state State) ExampleFatalErr() error {
+func (state State) FatalErr() error {
 	return state.fatalErr
 }
